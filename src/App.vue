@@ -1,30 +1,22 @@
+<script setup>
+import { RouterView } from 'vue-router'
+import TheHeader from './components/TheHeader.vue'
+import TheFooter from './components/TheFooter.vue'
+import BackToTop from '@/components/BackToTop.vue'
+</script>
+
 <template>
-  <div id="app">
-    <router-view />
+  <div class="min-h-screen bg-gray-50 flex flex-col relative">
+
+    <div class="relative flex flex-col min-h-screen">
+      <TheHeader />
+
+      <main class="container w-full mx-auto px-4 py-6 flex-1">
+        <router-view />
+      </main>
+
+      <TheFooter />
+    </div>
+    <BackToTop />
   </div>
 </template>
-
-<style scoped>
-/* Demo styles - can be discarded. */
-header,
-footer,
-aside,
-main {
-  margin: 4px;
-  padding: 12px;
-  text-transform: uppercase;
-  color: #666;
-  border: 1px solid rgba(0, 0, 0, 0.07);
-}
-header,
-footer {
-  background-color: #e9f8fe;
-  min-height: 60px;
-}
-aside {
-  background-color: #fef2ff;
-}
-main {
-  background-color: #efffed;
-}
-</style>

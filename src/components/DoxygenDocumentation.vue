@@ -1,7 +1,7 @@
 <template>
-  <div class="doxygendocs">
+<div class="doxygendocs">
     <doxygen-xml :baseURL="'/documentation/api/' + props.version" />
-  </div>
+</div>
 </template>
 
 <script setup>
