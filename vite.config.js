@@ -22,4 +22,14 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vue-vendor': ['vue', 'vue-router'],
+          'docs': ['vue3-doxygen-xml']
+        }
+      }
+    }
+  }
 })
