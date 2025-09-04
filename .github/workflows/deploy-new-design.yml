@@ -32,6 +32,8 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: Build website
+        env:
+          NEW_DESIGN_DEPLOY: 'true'
         run: yarn build
 
       - name: Setup Pages
