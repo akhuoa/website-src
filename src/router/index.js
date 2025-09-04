@@ -11,7 +11,15 @@ const router = createRouter({
         if (sessionStorage.getItem('redirect') !== null) {
           const redirect = sessionStorage.redirect
           delete sessionStorage.redirect
-          next(redirect)
+
+          const basePath = import.meta.env.BASE_URL
+          let redirectPath = redirect
+
+          if (basePath !== '/' && redirectPath.startsWith(basePath)) {
+            redirectPath = redirectPath.substring(basePath.length - 1)
+          }
+
+          next(redirectPath)
         } else {
           next()
         }
