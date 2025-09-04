@@ -5,32 +5,32 @@
         <div class="flex">
           <router-link to="/" class="flex items-center group hover:bg-transparent">
             <div class="w-8 h-8 rounded-lg flex items-center justify-center">
-              <img src="https://avatars.githubusercontent.com/u/112673382?s=32&v=4" alt="Continuum Modelling Libraries" width="32" height="32" />
+              <img src="https://avatars.githubusercontent.com/u/112673382?s=48&v=4" alt="Continuum Modelling Libraries" width="32" height="32" />
             </div>
             <span class="ml-2 text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors duration-200">
               CMLibs
             </span>
           </router-link>
         </div>
-        
+
         <div class="flex items-center space-x-4">
-          <router-link 
-            to="/" 
+          <router-link
+            to="/"
             class="relative inline-flex text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
             active-class="text-blue-600 font-semibold"
           >
             <span class="relative after:content-[''] after:absolute after:bottom-[-0.5rem] after:left-0 after:w-full after:h-0.5 after:bg-blue-600 after:transform after:scale-x-0 after:transition-transform after:duration-200" :class="{ 'after:scale-x-100': $route.path === '/' }">Home</span>
           </router-link>
-          <router-link 
-            to="/documentation/api" 
+          <router-link
+            to="/documentation/api"
             class="relative inline-flex text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
             active-class="text-blue-600 font-semibold"
             :class="{ 'text-blue-600 font-semibold': $route.path.startsWith('/documentation/api') }"
           >
             <span class="relative after:content-[''] after:absolute after:bottom-[-0.5rem] after:left-0 after:w-full after:h-0.5 after:bg-blue-600 after:transform after:scale-x-0 after:transition-transform after:duration-200" :class="{ 'after:scale-x-100': $route.path.startsWith('/documentation/api') }">API Docs</span>
           </router-link>
-          <router-link 
-            to="/about" 
+          <router-link
+            to="/about"
             class="relative inline-flex text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
             active-class="text-blue-600 font-semibold"
           >
@@ -40,4 +40,4 @@
       </div>
     </nav>
   </header>
-</template> 
+</template>
