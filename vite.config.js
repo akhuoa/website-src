@@ -25,9 +25,21 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
-          'vue-vendor': ['vue', 'vue-router'],
-          'docs': ['vue3-doxygen-xml']
+        manualChunks(id) {
+          // Vendor chunk for Vue core libraries
+          if (id.includes('node_modules/vue') || id.includes('node_modules/@vue')) {
+            return 'vue-vendor'
+          }
+
+          // Only create docs chunk if it's actually imported
+          if (id.includes('node_modules/vue3-doxygen-xml')) {
+            return 'docs'
+          }
+
+          // UnoCSS in its own chunk
+          if (id.includes('node_modules/@unocss') || id.includes('node_modules/unocss')) {
+            return 'unocss-vendor'
+          }
         }
       }
     }
