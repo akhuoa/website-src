@@ -15,29 +15,54 @@
 
         <div class="flex items-center space-x-4">
           <router-link
-            to="/"
+            v-for="link in navigationLinks"
+            :key="link.path"
+            :to="link.path"
             class="relative inline-flex text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
             active-class="text-blue-600 font-semibold"
+            :class="{ 'text-blue-600 font-semibold': isActiveLink(link) }"
           >
-            <span class="relative after:content-[''] after:absolute after:bottom-[-0.5rem] after:left-0 after:w-full after:h-0.5 after:bg-blue-600 after:transform after:scale-x-0 after:transition-transform after:duration-200" :class="{ 'after:scale-x-100': $route.path === '/' }">Home</span>
-          </router-link>
-          <router-link
-            to="/documentation/api"
-            class="relative inline-flex text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
-            active-class="text-blue-600 font-semibold"
-            :class="{ 'text-blue-600 font-semibold': $route.path.startsWith('/documentation/api') }"
-          >
-            <span class="relative after:content-[''] after:absolute after:bottom-[-0.5rem] after:left-0 after:w-full after:h-0.5 after:bg-blue-600 after:transform after:scale-x-0 after:transition-transform after:duration-200" :class="{ 'after:scale-x-100': $route.path.startsWith('/documentation/api') }">API Docs</span>
-          </router-link>
-          <router-link
-            to="/about"
-            class="relative inline-flex text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
-            active-class="text-blue-600 font-semibold"
-          >
-            <span class="relative after:content-[''] after:absolute after:bottom-[-0.5rem] after:left-0 after:w-full after:h-0.5 after:bg-blue-600 after:transform after:scale-x-0 after:transition-transform after:duration-200" :class="{ 'after:scale-x-100': $route.path === '/about' }">About</span>
+            <span
+              class="relative after:content-[''] after:absolute after:bottom-[-0.5rem] after:left-0 after:w-full after:h-0.5 after:bg-blue-600 after:transform after:scale-x-0 after:transition-transform after:duration-200"
+              :class="{ 'after:scale-x-100': isActiveLink(link) }"
+            >
+              {{ link.label }}
+            </span>
           </router-link>
         </div>
       </div>
     </nav>
   </header>
 </template>
+
+<script setup>
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+
+const navigationLinks = [
+  {
+    path: '/',
+    label: 'Home',
+    exact: true
+  },
+  {
+    path: '/documentation/api',
+    label: 'API Docs',
+    exact: false
+  },
+  {
+    path: '/about',
+    label: 'About',
+    exact: true
+  }
+]
+
+const isActiveLink = (link) => {
+  if (link.exact) {
+    return route.path === link.path
+  } else {
+    return route.path.startsWith(link.path)
+  }
+}
+</script>
