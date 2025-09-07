@@ -1,7 +1,7 @@
 <template>
   <nav class="flex" aria-label="Breadcrumb">
-    <ol class="flex items-center space-x-2">
-      <li>
+    <ol class="flex flex-wrap items-center gap-x-2 gap-y-1">
+      <li class="flex items-center">
         <router-link to="/" class="text-gray-500 hover:text-blue-600 transition-colors duration-200">
           Home
         </router-link>
@@ -10,7 +10,7 @@
         <svg class="h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
           <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
         </svg>
-        <router-link 
+        <router-link
           v-if="item.path && index !== breadcrumbs.length - 1"
           :to="item.path"
           class="ml-2 text-gray-500 hover:text-blue-600 transition-colors duration-200"
@@ -32,7 +32,7 @@ const route = useRoute()
 const breadcrumbs = computed(() => {
   const paths = route.path.split('/').filter(Boolean)
   const result = []
-  
+
   // Add API Documentation as the first item
   if (paths[0] === 'documentation') {
     result.push({
@@ -62,4 +62,4 @@ const formatSegment = (segment) => {
     .replace(/[-_]/g, ' ')
     .replace(/\b\w/g, l => l.toUpperCase())
 }
-</script> 
+</script>
