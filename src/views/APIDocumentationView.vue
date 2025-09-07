@@ -28,18 +28,26 @@ import Breadcrumb from '@/components/Breadcrumb.vue'
 }
 
 .doxygendocs h1 {
-  font-size: 2.25rem;
+  font-size: 1.25rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
   color: #1f2937;
+
+  @media screen and (min-width: 640px) {
+    font-size: 2.5rem;
+  }
 }
 
 .doxygendocs h2 {
-  font-size: 1.875rem;
+  font-size: 1.125rem;
   font-weight: 600;
   margin-top: 2rem;
   margin-bottom: 1rem;
   color: #1f2937;
+
+  @media screen and (min-width: 640px) {
+    font-size: 1.875rem;
+  }
 }
 
 .doxygendocs h3 {
